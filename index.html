@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,13 +110,14 @@
       }
     </style>
 
-    <div id="regForm">
+    <form id="regForm">
       <h2 style="color: #0388e8">XIII Открытый Кубок Екатеринбурга по математическим боям. Регистрация</h2>
 
       <h3>Информация о сопровождающем</h3>
       <input id="escortName" placeholder="ФИО сопровождающего" required />
-      <input id="phone" placeholder="Телефон (+7...)" type="tel" required />
-      <input id="email" placeholder="Email" type="email" required />
+      <input id="phone" placeholder="Телефон (+7...)" type="tel" pattern="^\+7\d{10}$"   title="Введите номер в формате +7XXXXXXXXXX" 
+      required />
+      <input id="email" placeholder="Email" type="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"   title="Введите корректный email"      required />
       <h3>Информация о команде</h3>
       <small style="color: #9aa3ad">
         Внесите название вашего населенного пункта с соответствующим
@@ -131,7 +133,7 @@
         Обратите внимание: если команда собрана из разных классов, то играть она
         будет за старший класс - укажите его</small
       >
-      <input id="grade" placeholder="Класс" required />
+      <input id="grade" placeholder="Класс" required type="number" min="5" max="9"/>
       <small style="color: #9aa3ad">
         Название команды должно быть уникальным</small
       >
@@ -159,8 +161,8 @@
       </div>
       <div class="add-teacher" onclick="addTeacher()">➕ Добавить учителя</div>
 
-      <button class="btn" onclick="submitForm()">Отправить</button>
-    </div>
+      <button type="submit" class="btn">Отправить</button>
+    </form>
 
     <script>
       const API_URL =
@@ -182,6 +184,20 @@
           document.getElementById("teamError").textContent = "";
         }
       };
+
+      document.getElementById("regForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // предотвращаем обычную отправку
+
+        const form = e.target;
+
+        // встроенная валидация браузера
+        if (!form.checkValidity()) {
+          form.reportValidity(); // покажет ошибки
+          return;
+        }
+
+        submitForm(); // если все ок — вызываем твою функцию отправки
+      });
 
       function addTeacher() {
         const inp = document.createElement("input");
