@@ -1,233 +1,248 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Регистрация команды</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background: #f0f4f8;
-        margin: 0;
-        padding: 0;
+        background: #f5f7fa;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, sans-serif;
+        padding: 24px;
       }
 
-      .container {
-        max-width: 720px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      #regForm {
+        max-width: 760px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
       }
 
-      h2 {
-        text-align: center;
-        color: #0388e8;
+      #regForm > input,
+      #members input,
+      #teachers input {
+        width: 95%;
+        padding: 14px 16px;
+        margin-bottom: 14px;
+        font-size: 15px;
+        border-radius: 10px;
+        border: 1px solid #dfe3e8;
+        transition: border-color 0.2s, box-shadow 0.2s;
       }
 
-      label {
-        display: block;
-        margin-top: 16px;
-        font-weight: bold;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 6px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
+      input::placeholder {
+        color: #9aa3ad;
       }
 
       input:focus {
-        border-color: #0388e8;
         outline: none;
+        border-color: #0388e8;
+        box-shadow: 0 0 0 3px rgba(3, 136, 232, 0.15);
       }
 
-      input.error {
-        border-color: #e53935;
-        background: #fff5f5;
-      }
-
-      small {
-        display: block;
-        font-size: 12px;
-        color: #666;
-        margin-top: 3px;
-      }
-
-      .error-message {
-        display: none;
-        color: #e53935;
+      .error {
+        margin-top: -8px;
+        margin-bottom: 12px;
         font-size: 13px;
-        margin-top: 4px;
+        color: #ff3b3b;
       }
 
-      button {
-        margin-top: 20px;
-        width: 100%;
-        padding: 12px;
-        background: #0388e8;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
+      #members,
+      #teachers {
+        margin-top: 8px;
+      }
+
+      #members input,
+      #teachers input {
+        background: #f9fbfd;
+      }
+
+      .add-teacher {
+        display: inline-block;
+        margin: 12px 0 24px;
         cursor: pointer;
-      }
-
-      button:hover {
-        background: #026fc2;
-      }
-
-      .add-btn {
-        margin-top: 10px;
-        background: #0388e8;
-        width: auto;
-        padding: 8px 14px;
         font-size: 14px;
+        font-weight: 500;
+        color: #0388e8;
+        transition: color 0.2s;
+      }
+
+      .add-teacher:hover {
+        color: #ff5c00;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 12px;
+        border: none;
+        background: #0388e8;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background 0.25s, transform 0.15s, box-shadow 0.15s;
+      }
+
+      .btn:hover {
+        background: #ff5c00;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(255, 92, 0, 0.35);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 10px rgba(255, 92, 0, 0.25);
+      }
+
+      @media (max-width: 600px) {
+        #regForm {
+          padding: 20px;
+        }
       }
     </style>
-  </head>
 
-  <body>
-    <div class="container">
-      <h2>Регистрация команды</h2>
+    <div id="regForm">
+      <h2 style="color: #0388e8">XIII Открытый Кубок Екатеринбурга по математическим боям. Регистрация</h2>
 
-      <form
-        id="registrationForm"
-        method="POST"
-        action="https://script.google.com/macros/s/AKfycbyXlAg5TQK2pBGcZZzTXQ6LdvbSNKIDzO2eILz1RjMzu9qK6vp-Jd_ttNn4_nJPmZLh/exec"
-        target="hidden_iframe"
-        onsubmit="submitted = true; return validateForm();"
+      <h3>Информация о сопровождающем</h3>
+      <input id="escortName" placeholder="ФИО сопровождающего" required />
+      <input id="phone" placeholder="Телефон (+7...)" type="tel" required />
+      <input id="email" placeholder="Email" type="email" required />
+      <h3>Информация о команде</h3>
+      <small style="color: #9aa3ad">
+        Внесите название вашего населенного пункта с соответствующим
+        сокращением. Например, "г. Екатеринбург"</small
       >
-        <label>ФИО сопровождающего</label>
-        <input type="text" name="supervisorName" required />
+      <input id="city" placeholder="Населенный пункт" required />
+      <small style="color: #9aa3ad">
+        Внесите название школы по форме, с соблюдением всех кавычек и
+        тире. Например, МАОУ «СОШ №4»</small
+      >
+      <input id="school" placeholder="Школа" required />
+      <small style="color: #9aa3ad">
+        Обратите внимание: если команда собрана из разных классов, то играть она
+        будет за старший класс - укажите его</small
+      >
+      <input id="grade" placeholder="Класс" required />
+      <small style="color: #9aa3ad">
+        Название команды должно быть уникальным</small
+      >
+      <input id="teamName" placeholder="Название команды" required />
+      <div class="error" id="teamError"></div>
 
-        <label>Телефон сопровождающего</label>
-        <input
-          type="tel"
-          name="supervisorPhone"
-          placeholder="+7 (999) 123-45-67"
-          required
-        />
+      <h3>Участники команды</h3>
+      <small style="color: #9aa3ad">
+        Если в Вашей команде меньше 6 человек, лишние поля заполнять не нужно</small
+      >
+      <!-- Участники -->
+      <div id="members">
+        <input placeholder="Участник 1(Фамилия, имя)" />
+        <input placeholder="Участник 2(Фамилия, имя)" />
+        <input placeholder="Участник 3(Фамилия, имя)" />
+        <input placeholder="Участник 4(Фамилия, имя)" />
+        <input placeholder="Участник 5(Фамилия, имя)" />
+        <input placeholder="Участник 6(Фамилия, имя)" />
+      </div>
 
-        <label>Email сопровождающего</label>
-        <input type="email" name="supervisorEmail" required />
+      <h3>Учителя, подготовившие команду</h3>
+      <!-- Учителя -->
+      <div id="teachers">
+        <input placeholder="ФИО учителя" />
+      </div>
+      <div class="add-teacher" onclick="addTeacher()">➕ Добавить учителя</div>
 
-        <label>Город / населённый пункт</label>
-        <input
-          type="text"
-          name="city"
-          placeholder="г. Москва, с. Ивановка"
-          required
-        />
-        <small>Используйте префиксы: г., с., п. и т.д.</small>
-
-        <label>Школа (полное официальное название)</label>
-        <input type="text" name="school" placeholder='МАОУ СОШ "4"' required />
-
-        <label>Класс</label>
-        <input type="text" name="class" required />
-
-        <label>Название команды</label>
-        <input type="text" name="teamName" id="teamName" required />
-        <div id="teamError" class="error-message"></div>
-
-        <label>Участники (Фамилия Имя)</label>
-        <input type="text" name="participant1" required />
-        <input type="text" name="participant2" required />
-        <input type="text" name="participant3" />
-        <input type="text" name="participant4" />
-        <input type="text" name="participant5" />
-        <input type="text" name="participant6" />
-        <small
-          >Можно оставить некоторые поля пустыми, если участников меньше
-          6</small
-        >
-
-        <label>Учителя, подготовившие команду</label>
-        <div id="teachers">
-          <input type="text" name="teacher1" required />
-        </div>
-        <button type="button" class="add-btn" onclick="addTeacher()">
-          + Добавить учителя
-        </button>
-
-        <button type="submit">Отправить</button>
-      </form>
-
-      <iframe
-        name="hidden_iframe"
-        style="display: none"
-        onload="handleResponse()"
-      ></iframe>
+      <button class="btn" onclick="submitForm()">Отправить</button>
     </div>
 
     <script>
-      let submitted = false;
+      const API_URL =
+        "https://script.google.com/macros/s/AKfycbyRHTM9lemsNIGqCeCMy20K883ggcMZiUhf7bNwxFwkVVLK9xjqPesD5qXG48s6Q0u2uA/exec";
 
-      function validateForm() {
-        clearTeamError();
-        return true;
-      }
+      let existingTeams = [];
 
-      function handleResponse() {
-        if (!submitted) return;
+      fetch(API_URL)
+        .then((r) => r.json())
+        .then((data) => {
+          existingTeams = data.teams || [];
+        });
 
-        const iframe = document.getElementsByName("hidden_iframe")[0];
-        const text = iframe.contentDocument.body.innerText.trim();
-        submitted = false;
-
-        if (text === "Success") {
-          alert("Регистрация прошла успешно!");
-          document.getElementById("registrationForm").reset();
-          clearTeamError();
-          return;
+      document.getElementById("teamName").onblur = function () {
+        if (existingTeams.includes(this.value.trim())) {
+          document.getElementById("teamError").textContent =
+            "Такое название уже зарегистрировано. Попробуйте другое";
+        } else {
+          document.getElementById("teamError").textContent = "";
         }
-
-        if (text.includes("название команды")) {
-          showTeamError(text);
-          return;
-        }
-
-        alert(text);
-      }
-
-      function showTeamError(message) {
-        const input = document.getElementById("teamName");
-        const error = document.getElementById("teamError");
-
-        input.classList.add("error");
-        error.textContent = message;
-        error.style.display = "block";
-
-        input.scrollIntoView({ behavior: "smooth", block: "center" });
-        input.focus();
-      }
-
-      function clearTeamError() {
-        const input = document.getElementById("teamName");
-        const error = document.getElementById("teamError");
-
-        input.classList.remove("error");
-        error.style.display = "none";
-        error.textContent = "";
-      }
-
-      document
-        .getElementById("teamName")
-        .addEventListener("input", clearTeamError);
+      };
 
       function addTeacher() {
-        const teachers = document.getElementById("teachers");
-        const count = teachers.children.length + 1;
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = "teacher" + count;
-        input.required = true;
-        teachers.appendChild(input);
+        const inp = document.createElement("input");
+        inp.placeholder = "ФИО учителя";
+        document.getElementById("teachers").appendChild(inp);
+      }
+
+      function submitForm() {
+        const teamErrorEl = document.getElementById("teamError");
+        teamErrorEl.textContent = ""; // сброс ошибок перед отправкой
+
+        const payload = {
+          escortName: document.getElementById("escortName").value.trim(),
+          phone: document.getElementById("phone").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          city: document.getElementById("city").value.trim(),
+          school: document.getElementById("school").value.trim(),
+          grade: document.getElementById("grade").value.trim(),
+          teamName: document.getElementById("teamName").value.trim(),
+          members: Array.from(document.querySelectorAll("#members input")).map(
+            (i) => i.value.trim()
+          ),
+          teachers: Array.from(
+            document.querySelectorAll("#teachers input")
+          ).map((i) => i.value.trim()),
+        };
+
+        // блокировка кнопки на время отправки
+        const btn = document.querySelector(".btn");
+        btn.disabled = true;
+        btn.textContent = "Отправка...";
+
+        fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" }, // GAS-friendly
+          body: JSON.stringify(payload),
+        })
+          .then((r) => r.json())
+          .then((resp) => {
+            if (resp.status === "ok") {
+              alert("Регистрация успешно завершена. Ждем встречи с вами!");
+              location.reload();
+            } else if (resp.status === "error") {
+              // если сервер вернул ошибку (например название команды)
+              teamErrorEl.textContent =
+                resp.message || "Что-то пошло не так — свяжитесь с нами";
+            } else {
+              // любая другая ситуация
+              teamErrorEl.textContent =
+                "Что-то пошло не так — свяжитесь с нами";
+            }
+          })
+          .catch(() => {
+            // если fetch сам упал (сеть, CORS и т.д.)
+            teamErrorEl.textContent =
+              "Сервис временно недоступен — попробуйте позже";
+          })
+          .finally(() => {
+            btn.disabled = false;
+            btn.textContent = "Отправить";
+          });
       }
     </script>
   </body>
