@@ -177,7 +177,10 @@
         });
 
       document.getElementById("teamName").onblur = function () {
-        if (existingTeams.includes(this.value.trim())) {
+        const inputValue = this.value.trim().toLowerCase(); // приводим к нижнему регистру
+        const existingLower = existingTeams.map(t => t.toLowerCase()); // все команды в нижний регистр
+
+        if (existingLower.includes(inputValue)) {
           document.getElementById("teamError").textContent =
             "Такое название уже зарегистрировано. Попробуйте другое";
         } else {
