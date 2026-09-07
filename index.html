@@ -467,36 +467,34 @@
           submitForm();
         });
 
-      function validateOptionalMembers() {
-        const rows = Array.from(
-          document.querySelectorAll("#members .member-row")
-        );
+function validateOptionalMembers() {
+  const rows = Array.from(
+    document.querySelectorAll("#members .member-row")
+  );
 
-        rows.forEach((row, index) => {
-          if (index < 3) return;
+  rows.forEach((row, index) => {
+    // первые 3 участника обязательные — их здесь не трогаем
+    if (index < 3) return;
 
-          const nameInput = row.querySelector(".member-name");
-          const genderSelect = row.querySelector(".member-gender");
+    const nameInput = row.querySelector(".member-name");
+    const genderSelect = row.querySelector(".member-gender");
 
-          nameInput.setCustomValidity("");
-          genderSelect.setCustomValidity("");
+    // обязательно очищаем предыдущую ошибку
+    nameInput.setCustomValidity("");
+    genderSelect.setCustomValidity("");
 
-          const hasName = nameInput.value.trim() !== "";
-          const hasGender = genderSelect.value !== "";
+    const hasName = nameInput.value.trim() !== "";
+    const hasGender = genderSelect.value !== "";
 
-          if (hasName && !hasGender) {
-            genderSelect.setCustomValidity(
-              "Выберите пол указанного участника"
-            );
-          }
+    if (hasName && !hasGender) {
+      genderSelect.setCustomValidity("Выберите пол участника");
+    }
 
-          if (!hasName && hasGender) {
-            nameInput.setCustomValidity(
-              "Укажите фамилию и имя участника"
-            );
-          }
-        });
-      }
+    if (!hasName && hasGender) {
+      nameInput.setCustomValidity("Укажите фамилию и имя участника");
+    }
+  });
+}
 
       document.querySelectorAll(".optional-member").forEach((input) => {
         input.addEventListener("input", validateOptionalMembers);
