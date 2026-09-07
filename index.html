@@ -79,18 +79,75 @@
         background: #f9fbfd;
       }
 
-      .member-row {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 180px;
-        gap: 12px;
-        margin-bottom: 14px;
-      }
+      /* Строка участника: ФИО + пол */
+.member-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 10px;
+  margin-bottom: 14px;
+}
 
-      .member-row input,
-      .member-row select {
-        margin-bottom: 0;
-        background: #f9fbfd;
-      }
+/* ФИО участника */
+.member-row .member-name {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 0;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #dfe3e8;
+  background: #f9fbfd;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Выпадающий список пола */
+.member-row .member-gender {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 0;
+  font-family: inherit;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #dfe3e8;
+  background: #f9fbfd;
+  color: #555;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Дата отъезда — выглядит как обычное поле формы */
+#departureDate {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #dfe3e8;
+  background: #ffffff;
+  color: #555;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.member-row .member-name:focus,
+.member-row .member-gender:focus,
+#departureDate:focus {
+  outline: none;
+  border-color: #0388e8;
+  box-shadow: 0 0 0 3px rgba(3, 136, 232, 0.15);
+}
+
+/* Серый текст "Пол" / "Выберите дату отъезда" */
+.member-gender:invalid,
+#departureDate:invalid {
+  color: #9aa3ad;
+}
+
+/* На телефоне ФИО и пол друг под другом */
+@media (max-width: 600px) {
+  .member-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
 
       .add-teacher {
         display: inline-block;
