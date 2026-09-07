@@ -113,9 +113,8 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Дата отъезда — выглядит как обычное поле формы */
 #departureDate {
-  width: 100%;
+  width: 95%;
   padding: 14px 16px;
   margin-bottom: 14px;
   font-family: inherit;
@@ -125,6 +124,9 @@
   background: #ffffff;
   color: #555;
   transition: border-color 0.2s, box-shadow 0.2s;
+
+  /* чтобы width считался так же предсказуемо */
+  box-sizing: content-box;
 }
 
 .member-row .member-name:focus,
@@ -339,7 +341,7 @@
             class="member-name optional-member"
             placeholder="Участник 4 (Фамилия, имя)"
           />
-          <select class="member-gender optional-gender">
+          <select class="member-gender">
             <option value="">Пол</option>
             <option value="Мужской">Мужской</option>
             <option value="Женский">Женский</option>
@@ -351,7 +353,7 @@
             class="member-name optional-member"
             placeholder="Участник 5 (Фамилия, имя)"
           />
-          <select class="member-gender optional-gender">
+          <select class="member-gender">
             <option value="">Пол</option>
             <option value="Мужской">Мужской</option>
             <option value="Женский">Женский</option>
@@ -363,7 +365,7 @@
             class="member-name optional-member"
             placeholder="Участник 6 (Фамилия, имя)"
           />
-          <select class="member-gender optional-gender">
+          <select class="member-gender">
             <option value="">Пол</option>
             <option value="Мужской">Мужской</option>
             <option value="Женский">Женский</option>
